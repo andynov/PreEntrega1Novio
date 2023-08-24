@@ -6,14 +6,14 @@ const NavBar = () => {
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home"><strong>Allegro </strong><i>Tienda de Instrumentos Musicales</i></Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#guitarras">Guitarras</Nav.Link>
+            <Nav.Link href="#percusion">Percusión</Nav.Link>
+            <Nav.Link href="#pricing">Instrumentos de viento</Nav.Link>
           </Nav>
           <Nav.Link href="#deets">
-              0<CartWidget />
+              <CartWidget /><strong>0</strong>
             </Nav.Link>
         </Container>
       </Navbar>
