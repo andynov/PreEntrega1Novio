@@ -1,5 +1,4 @@
-function ItemListContainer(props){
-  const {greeting} = props
+function ItemListContainer({greeting}){
   return (
     <div>
       <h1>{greeting}</h1>
