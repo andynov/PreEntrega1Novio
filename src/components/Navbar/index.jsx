@@ -12,9 +12,9 @@ const NavBar = () => {
         <Container>
           <Link to='/'><img className="logo" src="/logo.png" alt="logo" /><strong>Allegro </strong><i>Tienda de Instrumentos Musicales</i></Link>
           <Nav className="me-auto">
-            <NavLink to=''>Guitarras</NavLink>
-            <NavLink to=''>Percusión</NavLink>
-            <NavLink to=''>Instrumentos de viento</NavLink>
+            <NavLink to='/category/guitarra'>Guitarras</NavLink>
+            <NavLink to='/category/percusion'>Percusión</NavLink>
+            <NavLink to='/category/vientos'>Instrumentos de viento</NavLink>
           </Nav>
           <Link to='/cart'>
             <CartWidget />
