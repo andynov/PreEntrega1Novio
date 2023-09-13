@@ -13,5 +13,5 @@ const instrumentos = [
 export const mFetch = (iid) => new Promise ((res, rej) => {
     setTimeout(() => {
       res(iid ? instrumentos.find(instrumento => instrumento.id === iid) : instrumentos)
-  }, 1000);
-    }, 1000);
+    }, 1000)
+})

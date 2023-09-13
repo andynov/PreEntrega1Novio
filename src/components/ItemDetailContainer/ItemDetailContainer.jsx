@@ -1,22 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { mFetch } from '../../data/mockFetch'
 
 const ItemDetailContainer = () => {
-  const [instrumento, setInstrumento] = useState({})
+  const {instrumento, setInstrumentos} = useState({})
+
 
   useEffect(()=> {
-    mFetch(5)
-    .then(resp => setInstrumento(resp))
+    mFetch(iid)
+    .then(resp => setInstrumentos(resp))
     .catch((err)=> console.log(err))
-    // .finally(setLoading)
+    .finally(setLoading)
   }, [])
 
   return (
     <div>
-    < ItemDetail instrumento={instrumento} />
+    < ItemDetail instrumento={instrumento}  />
     </div>
   )
 }
 
 export default ItemDetailContainer
+
+
