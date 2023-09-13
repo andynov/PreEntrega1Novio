@@ -7,7 +7,7 @@ const Item = ({ instrumento }) => {
                 <strong>{instrumento.name}</strong>
                 <p>Precio: {instrumento.precio}</p>
                 <div className="card-footer">
-                    <Link to={`/detalle${instrumento.id}`}>
+                    <Link to={`/detalle/${instrumento.id}`}>
                     <button className="btn btn-outline-dark">Detalle:</button>
                     </Link>
                 </div>
