@@ -7,7 +7,7 @@ import ItemList from "./ItemList/ItemList";
 
 
 const ItemListContainer = () => {
-  const [instrumentos, setInstrumentos] = useState([])
+  const [instrumentos, setInstrumentos] = useState({})
   const [loading, setLoading] = useState(true)
   const {cid} = useParams()
 

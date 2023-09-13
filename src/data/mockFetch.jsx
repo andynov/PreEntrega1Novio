@@ -12,6 +12,6 @@ const instrumentos = [
 
 export const mFetch = (iid) => new Promise ((res, rej) => {
     setTimeout(() => {
-      res(iid ? instrumentos.find(instrumento => instrumento.id === iid) : instrumentos)
+      res(iid ? instrumentos.find(instrumento => instrumento.id === parseInt(iid)) : instrumentos)
     }, 1000)
 })
