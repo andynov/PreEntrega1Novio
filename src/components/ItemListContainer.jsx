@@ -14,7 +14,7 @@ const ItemListContainer = () => {
   useEffect(()=>{
     if(cid){
       mFetch()
-      .then(respuesta => setInstrumentos(respuesta.filter(instrumento => cid === instrumento.categorys)))
+      .then(respuesta => setInstrumentos(respuesta.filter(instrumento => cid === instrumento.category)))
       .catch(err => console.log(err))
       .finally(()=>setLoading(false))
     } else {

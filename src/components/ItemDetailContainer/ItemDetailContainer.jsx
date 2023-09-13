@@ -6,7 +6,7 @@ import { mFetch } from '../../data/mockFetch'
 
 
 const ItemDetailContainer = () => {
-  const {instrumento, setInstrumentos} = useState({})
+  const [instrumento, setInstrumentos] = useState({})
   const {iid} = useParams()
 
 

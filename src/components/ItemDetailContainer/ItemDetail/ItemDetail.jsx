@@ -1,6 +1,6 @@
 import ItemCount from "../../ItemCount/ItemCount"
 
-const ItemDetail = (instrumento) => {
+const ItemDetail = ({instrumento}) => {
   const cantidad = (count) => {
     console.log('instrumentos agregados :', count)
   } 
