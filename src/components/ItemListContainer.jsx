@@ -1,27 +1,16 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList/ItemList";
+import { getFetch } from "../data/mockFetch";
 
 const ItemListContainer = () => {
   const [instrumentos, setInstrumentos] = useState([])
   const [loading, setLoading] = useState(true)
-  
-  const mFetch = async () =>{
-    try {
-      const url = "./src/data/data.json"
-      const instrumentosJson = await fetch(url)
-      const instrumentos = await instrumentosJson.json()
-      setInstrumentos(instrumentos)
-    }
-    catch(error) {
-      console.log('error')
-    }
-    finally {
-      setLoading(false)
-    }
-  }
-  
+
   useEffect(()=>{
-    mFetch()
+    getFetch()
+    .then(instrumentos => setInstrumentos(instrumentos))
+    .catch(err => console.log('Error en el servidor'))
+    .finally(()=>setLoading(false))
   }, [])
 
   return (

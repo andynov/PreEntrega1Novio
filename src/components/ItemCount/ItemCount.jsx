@@ -1,13 +1,29 @@
-import { useCounter } from "../Hooks/useCounter"
+import { useState } from "react"
 
 const ItemCount = ( { inicial, stock, cantidad }) => {
-    const {count, restar, sumar} = useCounter (inicial, stock)
-    return <div>
+    const [counter, setCounter] = useState(inicial)
+    
+    const sumar = ()=>{
+        if(counter < stock) {
+            setCounter(counter + 1)
+        }
+    }
 
+    const restar = ()=>{
+        if (counter > inicial){
+            setCounter(counter - 1)
+        }
+    }
+
+    const agregar = ()=>{
+        cantidad(counter)
+    }
+
+    return <div>
             <button onClick={restar}> -1 </button>
-            <strong> {count}</strong>
+            <strong> {counter}</strong>
             <button onClick={sumar}> +1 </button>
-            <button onClick={()=> cantidad(count)}> Agregar al Carrito </button>
+            <button onClick={agregar}> Agregar al Carrito </button>
     </div>
 }
 
