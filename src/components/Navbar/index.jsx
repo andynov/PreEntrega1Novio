@@ -8,7 +8,7 @@ const NavBar = () => {
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home"><img className="logo" src="public/logo.png" alt="logo" /><strong>Allegro </strong><i>Tienda de Instrumentos Musicales</i></Navbar.Brand>
+          <Navbar.Brand href="#home"><img className="logo" src="/logo.png" alt="logo" /><strong>Allegro </strong><i>Tienda de Instrumentos Musicales</i></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#guitarras">Guitarras</Nav.Link>
             <Nav.Link href="#percusion">Percusión</Nav.Link>

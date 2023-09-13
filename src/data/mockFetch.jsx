@@ -10,21 +10,8 @@ const instrumentos = [
   {id: 9, name: "Flauta traversa Yamaha", stock: 4, precio: 950000, description: "Flauta traversa Yamaha, para nivel profesional, con zapatillado nuevo", category: "vientos"},
   {id: 10, name: "Armónica Cromática Hohner", stock: 1, precio: 700000, description: "Armónica cromática Hohner, dos octavas, recomendada para uso profesional", category: "vientos"}]
 
-export const mFetch = () => new Promise ((res, rej) => {
-  const condition = true
-  if (condition){
+export const mFetch = (iid) => new Promise ((res, rej) => {
     setTimeout(() => {
-      res(instrumentos)
+      res(iid ? instrumentos.find(instrumento => instrumento.id === iid) : instrumentos)
+  }, 1000);
     }, 1000);
-    } else {
-    
-    }
-    })
-
-
-
-export const mFetchOne = (iid) => new Promise ((res, rej) => {
-    setTimeout(() => {
-            res(iid ? instrumentos.find(instrumento => instrumento.id === iid) : instrumentos)
-        }, 1000);
-})
