@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Item = ({ instrumento }) => {
     return (
         <div className='card w-25'>
@@ -5,7 +7,10 @@ const Item = ({ instrumento }) => {
                 <strong>{instrumento.name}</strong>
                 <p>Precio: {instrumento.precio}</p>
                 <div className="card-footer">
-                    <button className="btn btn-outline-dark">Detalle:</button></div>
+                    <Link to='/detalle'>
+                    <button className="btn btn-outline-dark">Detalle:</button>
+                    </Link>
+                </div>
             </div>
         </div>
     )

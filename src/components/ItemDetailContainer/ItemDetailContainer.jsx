@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import ItemDetail from './ItemDetail/ItemDetail'
 import { mFetch } from '../../data/mockFetch'
 
