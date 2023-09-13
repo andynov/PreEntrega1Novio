@@ -8,11 +8,14 @@ const ItemDetail = ({instrumento}) => {
 
   return (
     <div className="row">
-      <h2>Vista de Detalle</h2>
+      <h1>Vista de Detalle</h1>
       <div className="col">
       </div>
       <div>
-        <strong>{instrumento.name}</strong>
+      <div className="card-body">
+        <img className="w-25" src={instrumento.imgUrl} alt="imagen instrumento" />
+      </div>
+        <h2><strong>{instrumento.name}</strong></h2>
         <p>Descripción: {instrumento.description}</p>
         <p>Precio: {instrumento.precio}</p>
         <p>Stock: {instrumento.stock}</p>
