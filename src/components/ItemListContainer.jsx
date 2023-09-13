@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList/ItemList";
-import { getFetch } from "../data/mockFetch";
+import { mFetch } from "../data/mockFetch";
 
 const ItemListContainer = () => {
   const [instrumentos, setInstrumentos] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
-    getFetch()
+    mFetch()
     .then(instrumentos => setInstrumentos(instrumentos))
     .catch(err => console.log('Error en el servidor'))
     .finally(()=>setLoading(false))

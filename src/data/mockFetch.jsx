@@ -10,18 +10,18 @@ const instrumentos = [
   {id: 9, name: "Flauta traversa Yamaha", stock: 4, precio: 950000, description: "Flauta traversa Yamaha, para nivel profesional, con zapatillado nuevo", category: "vientos"},
   {id: 10, name: "Armónica Cromática Hohner", stock: 1, precio: 700000, description: "Armónica cromática Hohner, dos octavas, recomendada para uso profesional", category: "vientos"}]
 
-export const mFetch = async () =>{
-    try {
-      const url = "./src/data/data.json"
-      const instrumentosJson = await fetch(url)
-      const data = await instrumentosJson.json()
-      instrumentos.push(...data)
-      return instrumentos
+export const mFetch = () => new Promise ((res, rej) => {
+  const condition = true
+  if (condition){
+    setTimeout(() => {
+      res(instrumentos)
+    }, 1000);
+    } else {
+    
     }
-    catch(error) {
-      console.log('error')
-    }
-}
+    })
+
+
 
 export const mFetchOne = (iid) => new Promise ((res, rej) => {
     setTimeout(() => {
