@@ -1,9 +1,13 @@
+import { useCartContext } from "../../../context/CartContext"
+
 import ItemCount from "../../ItemCount/ItemCount"
 
 const ItemDetail = ({instrumento}) => {
-  const cantidad = (count) => {
-    console.log('instrumentos agregados :', count)
-  } 
+  const {addInstrumento, cartList} = useCartContext()
+  const cantidad = (quantity) => {
+    addInstrumento({...instrumento, quantity})
+  }
+
 
 
   return (
