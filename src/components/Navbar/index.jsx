@@ -10,11 +10,11 @@ const NavBar = () => {
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Link to='/'><img className="logo" src="/logo.png" alt="logo" /><strong>Allegro </strong><i>Tienda de Instrumentos Musicales</i></Link>
-          <Nav className="me-auto">
-            <NavLink to='/category/guitarra'>Guitarras</NavLink>
-            <NavLink to='/category/percusion'>Percusión</NavLink>
-            <NavLink to='/category/vientos'>Instrumentos de viento</NavLink>
+          <Link className="nombre-shop" to='/'><img className="logo" src="/logo.png" alt="logo" /><strong className="allegro">Allegro </strong><i className="tienda">Tienda de Instrumentos Musicales</i></Link>
+          <Nav className="me-auto categorias">
+            <NavLink className="elemento-cat" to='/category/guitarra'>Guitarras</NavLink>
+            <NavLink className="elemento-cat" to='/category/percusion'>Percusión</NavLink>
+            <NavLink className="elemento-cat" to='/category/vientos'>Instrumentos de viento</NavLink>
           </Nav>
           <Link to='/cart'>
             <CartWidget />

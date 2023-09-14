@@ -1,5 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap');
+
 .logo {
-    width: 60px;
+    width: 100px;
     margin-right: 5px;
     background-color: transparent;
 }
+
+.categorias {
+    font-family: 'Poppins', sans-serif;
+}
+
+.elemento-cat {
+    margin-left: 13px;
+    text-decoration: none;
+    color: rgb(83, 77, 77);
+}
+
+.elemento-cat:hover{
+    text-shadow: 1px 1px 2px #3b3b3b;
+}
+
+.allegro {
+    font-size: 27px;
+    color: black;
+}
+
+.tienda {
+    color: black;
+    font-size: 16px;
+
+}
+
+.nombre-shop {
+    text-decoration: none;
+}
+
