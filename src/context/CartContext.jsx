@@ -14,10 +14,15 @@ export const CartContextProvider = ({children}) => {
         ])
     }
 
+const deleteCart = () =>{
+    setCartList([])
+}
+
   return (
     <CartContext.Provider value={{
         cartList,
-        addInstrumento
+        addInstrumento,
+        deleteCart
     }}>
         {children}
     </CartContext.Provider>
