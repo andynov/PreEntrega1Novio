@@ -1,11 +1,15 @@
+import { useState } from "react"
 import { useCartContext } from "../../../context/CartContext"
 
 import ItemCount from "../../ItemCount/ItemCount"
+import { Link } from "react-router-dom"
 
 const ItemDetail = ({instrumento}) => {
+  const [isCounter, setIsCounter] = useState(true)
   const {addInstrumento, cartList} = useCartContext()
   const cantidad = (quantity) => {
     addInstrumento({...instrumento, quantity})
+    setIsCounter(false)
   }
 
 
@@ -25,7 +29,19 @@ const ItemDetail = ({instrumento}) => {
         <p>Stock: {instrumento.stock}</p>
       </div>
       <div className="col">
+        {
+        isCounter ?
         <ItemCount inicial={1} stock={instrumento.stock} cantidad={cantidad}  />
+        :
+        <>
+          <Link to={'/'}>
+          <button className="btn btn-outline-dark">Seguir comprando</button>
+          </Link>
+          <Link to={'/cart'}>
+            <button className="btn btn-outline-dark">Ir al Carrito</button>
+          </Link>
+        </>
+        }
       </div>
     </div>
   )

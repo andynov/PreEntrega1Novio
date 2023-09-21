@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import { mFetch } from "../data/mockFetch";
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 import { useParams } from "react-router-dom";
 
 import ItemList from "./ItemList/ItemList";
+
+const Loading = () => {
+  return (
+    <>
+      <h2>Loading...</h2>
+    </>
+  )
+}
 
 
 
@@ -11,24 +19,27 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true)
   const {cid} = useParams()
 
-  useEffect(()=>{
-    if(cid){
-      mFetch()
-      .then(respuesta => setInstrumentos(respuesta.filter(instrumento => cid === instrumento.category)))
-      .catch(err => console.log(err))
-      .finally(()=>setLoading(false))
-    } else {
-
-      mFetch()
-      .then(respuesta => setInstrumentos(respuesta))
-      .catch(err => console.log('Error en el servidor'))
-      .finally(()=>setLoading(false))
-    }
-    }, [cid])
+useEffect(()=>{
+  if(cid){
+    const db = getFirestore()
+    const queryCollection = collection(db, 'instrumentos')
+    const queryFilter = query(queryCollection, where('category', '==', cid))
+    getDocs(queryFilter)
+    .then (resp => setInstrumentos(resp.docs.map(instr => ({id: instr.id, ...instr.data()}))))
+    .catch(err => console.log('Error en el servidor'))
+    .finally(()=>setLoading(false))
+  } else {
+    const db = getFirestore()
+    const queryCollection = collection(db, 'instrumentos')
+    getDocs(queryCollection)
+    .then (resp => setInstrumentos(resp.docs.map(instr => ({id: instr.id, ...instr.data()}))))
+    .catch(err => console.log('Error en el servidor'))
+    .finally(()=>setLoading(false))}
+  }, [cid])
 
   return (
     <div className="row">
-      {loading ? <h2>Loading...</h2> : <ItemList instrumentos={instrumentos} /> }
+      {loading ? <Loading /> : <ItemList instrumentos={instrumentos} /> }
     </div>
   )
 }

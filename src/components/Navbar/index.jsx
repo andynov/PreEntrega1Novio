@@ -16,10 +16,9 @@ const NavBar = () => {
             <NavLink className="elemento-cat" to='/category/percusion'>Percusión</NavLink>
             <NavLink className="elemento-cat" to='/category/vientos'>Instrumentos de viento</NavLink>
           </Nav>
-          <Link to='/cart'>
+          <Link className="cart-widget" to='/cart'>
             <CartWidget />
           </Link>
-          <strong>0</strong>
         </Container>
       </Navbar>
     </>
