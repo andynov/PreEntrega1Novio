@@ -3,17 +3,17 @@ import { useState } from "react"
 export const useCounter = (min, max) =>{
     const [count, setCount] = useState(min)
 
-    const sumar = () => {
+    const add = () => {
         if (count < max){
         setCount(count + 1)
         }
     }
 
-    const restar = () => {
+    const subtract = () => {
     if (count > min) {
         setCount(count - 1)
     }
     }
     
-    return {count, sumar, restar}
+    return {count, add, subtract}
 }

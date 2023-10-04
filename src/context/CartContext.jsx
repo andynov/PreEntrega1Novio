@@ -7,13 +7,13 @@ export const useCartContext = () => useContext(CartContext)
 
 export const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
-    const addInstrumento = (newInstrumento) => {
-        const index = cartList.findIndex(instrumento => instrumento.id === newInstrumento.id)
+    const addInstrument = (newInstrument) => {
+        const index = cartList.findIndex(instrument => instrument.id === newInstrument.id)
         if (index !== -1){
-            cartList[index].quantity += newInstrumento.quantity
+            cartList[index].quantity += newInstrument.quantity
             setCartList( [...cartList])
         } else {
-            setCartList([...cartList, newInstrumento])
+            setCartList([...cartList, newInstrument])
         }
 
 
@@ -23,20 +23,20 @@ export const CartContextProvider = ({children}) => {
         setCartList([])
     }
 
-    const cantidadTotal = () => cartList.reduce (( count, objInstrumento) => count += objInstrumento.quantity, 0)
+    const quantityTotal = () => cartList.reduce (( count, objInstrument) => count += objInstrument.quantity, 0)
 
-    const precioTotal = () => cartList.reduce (( count, objInstrumento) => count += objInstrumento.quantity * objInstrumento.precio, 0)
+    const precioTotal = () => cartList.reduce (( count, objInstrument) => count += objInstrument.quantity * objInstrument.precio, 0)
 
-    const eliminarItem = id => setCartList(cartList.filter(instrumento => instrumento.id !== id))
+    const deleteItem = id => setCartList(cartList.filter(instrument => instrument.id !== id))
 
     return (
         <CartContext.Provider value={{
             cartList,
-            addInstrumento,
+            addInstrument,
             deleteCart,
-            cantidadTotal,
+            quantityTotal,
             precioTotal,
-            eliminarItem
+            deleteItem
         }}>
             {children}
         </CartContext.Provider>

@@ -2,11 +2,11 @@ import { useCartContext } from "../../../context/CartContext";
 import "./CartWidget.css";
 
 function CartWidget() {
-    const { cantidadTotal } = useCartContext()
+    const { quantityTotal } = useCartContext()
     return (
         <div>
-            <img className="img-carrito" src="/cart.svg" alt="carrito" />
-            {cantidadTotal() !== 0 && <strong className="numtotal">{cantidadTotal()}</strong>}
+            <img className="img-chart" src="/cart.svg" alt="carrito" />
+            {quantityTotal() !== 0 && <strong className="numtotal">{quantityTotal()}</strong>}
         </div>
     )
 }

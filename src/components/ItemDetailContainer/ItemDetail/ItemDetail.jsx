@@ -4,11 +4,11 @@ import { useCartContext } from "../../../context/CartContext"
 import ItemCount from "../../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
 
-const ItemDetail = ({instrumento}) => {
+const ItemDetail = ({instrument}) => {
   const [isCounter, setIsCounter] = useState(true)
-  const {addInstrumento, cartList} = useCartContext()
-  const cantidad = (quantity) => {
-    addInstrumento({...instrumento, quantity})
+  const {addInstrument, cartList} = useCartContext()
+  const quant = (quantity) => {
+    addInstrument({...instrument, quantity})
     setIsCounter(false)
   }
 
@@ -21,17 +21,17 @@ const ItemDetail = ({instrumento}) => {
       </div>
       <div>
       <div className="card-body">
-        <img className="w-25" src={instrumento.imgUrl} alt="imagen instrumento" />
+        <img className="w-25" src={instrument.imgUrl} alt="imagen instrumento" />
       </div>
-        <h2><strong>{instrumento.name}</strong></h2>
-        <p>Descripción: {instrumento.description}</p>
-        <p>Precio: {instrumento.precio}</p>
-        <p>Stock: {instrumento.stock}</p>
+        <h2><strong>{instrument.name}</strong></h2>
+        <p>Descripción: {instrument.description}</p>
+        <p>Precio: {instrument.precio}</p>
+        <p>Stock: {instrument.stock}</p>
       </div>
       <div className="col">
         {
         isCounter ?
-        <ItemCount inicial={1} stock={instrumento.stock} cantidad={cantidad}  />
+        <ItemCount initial={1} stock={instrument.stock} quantity={quant}  />
         :
         <>
           <Link to={'/'}>

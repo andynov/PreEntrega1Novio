@@ -1,29 +1,29 @@
 import { useState } from "react"
 
-const ItemCount = ( { inicial, stock, cantidad }) => {
-    const [counter, setCounter] = useState(inicial)
+const ItemCount = ( { initial, stock, quantity }) => {
+    const [counter, setCounter] = useState(initial)
     
-    const sumar = ()=>{
+    const add = ()=>{
         if(counter < stock) {
             setCounter(counter + 1)
         }
     }
 
-    const restar = ()=>{
-        if (counter > inicial){
+    const subtract = ()=>{
+        if (counter > initial){
             setCounter(counter - 1)
         }
     }
 
-    const agregar = ()=>{
-        cantidad(counter)
+    const addChart = ()=>{
+        quantity(counter)
     }
 
     return <div>
-            <button onClick={restar}> -1 </button>
+            <button onClick={subtract}> -1 </button>
             <strong> {counter}</strong>
-            <button onClick={sumar}> +1 </button>
-            <button onClick={agregar}> Agregar al Carrito </button>
+            <button onClick={add}> +1 </button>
+            <button onClick={addChart}> Agregar al Carrito </button>
     </div>
 }
 

@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom"
 
-const Item = ({ instrumento }) => {
+const Item = ({ instrument }) => {
     return (
         <div className='card w-25'>
-            <strong className="card-header">{instrumento.name}</strong>
+            <strong className="card-header">{instrument.name}</strong>
             <div className="card-body">
-                <img className="w-100" src={instrumento.imgUrl} alt="imagen instrumento" />
+                <img className="w-100" src={instrument.imgUrl} alt="imagen instrumento" />
             </div>
-                <p>Precio: ${instrumento.precio}</p>
-                <p>{instrumento.description}</p>
+                <p>Precio: ${instrument.precio}</p>
+                <p>{instrument.description}</p>
                 <div className="card-footer">
-                    <Link to={`/detalle/${instrumento.id}`}>
+                    <Link to={`/detalle/${instrument.id}`}>
                     <button className="btn btn-outline-secondary">Detalle</button>
                     </Link>
                 </div>

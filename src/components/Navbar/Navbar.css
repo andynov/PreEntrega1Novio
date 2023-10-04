@@ -6,11 +6,11 @@
     background-color: transparent;
 }
 
-.categorias {
+.categories {
     font-family: 'Poppins', sans-serif;
 }
 
-.elemento-cat {
+.element-cat {
     margin-left: 13px;
     text-decoration: none;
     color: rgb(83, 77, 77);
@@ -25,13 +25,13 @@
     color: black;
 }
 
-.tienda {
+.market {
     color: black;
     font-size: 16px;
 
 }
 
-.nombre-shop {
+.name-shop {
     text-decoration: none;
 }
 

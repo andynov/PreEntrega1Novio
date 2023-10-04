@@ -4,10 +4,8 @@ import { useParams } from 'react-router-dom'
 
 import ItemDetail from './ItemDetail/ItemDetail'
 
-
-
 const ItemDetailContainer = () => {
-  const [instrumento, setInstrumentos] = useState({})
+  const [instrument, setInstruments] = useState({})
   const {iid} = useParams()
 
   useEffect (() =>{
@@ -15,13 +13,13 @@ const ItemDetailContainer = () => {
     const queryDoc = doc(db, 'instrumentos', iid)
     getDoc(queryDoc)
     .then (resp => ({id: resp.id, ...resp.data()}))
-    .then (resp => setInstrumentos(resp))
+    .then (resp => setInstruments(resp))
     .catch((err)=> console.log(err))
   }, [])
 
   return (
     <div>
-    < ItemDetail instrumento={instrumento}  />
+    < ItemDetail instrument={instrument}  />
     </div>
   )
 }
