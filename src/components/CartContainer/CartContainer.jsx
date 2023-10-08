@@ -10,6 +10,8 @@ const CartContainer = () => {
     phone:'',
     email:''
   })
+
+  const [id, setId] = useState('')
   
   const {cartList, deleteCart, precioTotal, quantityTotal, deleteItem} = useCartContext()
   
@@ -25,6 +27,12 @@ const CartContainer = () => {
     const queryDB = getFirestore()
     const orderCollection = collection(queryDB, 'orders')
     addDoc(orderCollection, order)
+    .then(({id}) => setId(id))
+    .catch(err => console.log(err))
+    .finally(() => {
+      setDataForm({name:'', phone:'', email:''})
+      deleteCart()
+    })
     
     // actualizar un documento
 
@@ -40,37 +48,37 @@ const CartContainer = () => {
   }
 
   return (
-    <div>
-      {cartList.map (instrument => <div key={ instrument.id}>
-        <img className="w-25" src={instrument.imgUrl} alt="imagen instrumento" />
-        {instrument.name} - {instrument.precio} - {instrument.quantity}
-        <button onClick={ () => deleteItem(instrument.id)}>🛑</button>
-        </div>)}
+    <>
+      {id !== '' && <h2>Muchas gracias por su compra. Su orden es: {id}</h2>}
+      {quantityTotal() ==! 0 ?
+        <div>
+          {cartList.map (instrument => <div key={ instrument.id}>
+            <img className="w-25" src={instrument.imgUrl} alt="imagen instrumento" />
+            {instrument.name} - {instrument.precio} - {instrument.quantity}
+            <button onClick={ () => deleteItem(instrument.id)}>🛑</button>
+            </div>)}
 
-      {precioTotal() !== 0 && <p>Precio Total: <strong>${precioTotal()}</strong></p>}
-      
-      {quantityTotal() !==0 ? 
-        (<div>
+          <p>Precio Total: <strong>${precioTotal()}</strong></p>
+          
           <button onClick={deleteCart}>Vaciar Carrito</button>
-
+    `
           <form onSubmit={handleAddOrder}>
             <input type='text' name='name' placeholder='Ingrese su nombre' value={dataForm.name} onChange={handleOnChange} />
-            <input type='text' phone='phone' placeholder='Ingrese su teléfono' value={dataForm.phone} onChange={handleOnChange} />
-            <input type='text' email='email' placeholder='Ingrese su email' value={dataForm.email} onChange={handleOnChange} />
+            <input type='number' name='phone' placeholder='Ingrese su teléfono' value={dataForm.phone} onChange={handleOnChange} />
+            <input type='email' name='email' placeholder='Ingrese su email' value={dataForm.email} onChange={handleOnChange} />
             <button className="btn btn-outline-secondary">Confirmar compra</button>
-      	  </form>
-          
-        </div>)
-        : 
-          (<div>
-              <h2>No hay Instrumentos en el carrito</h2>
-              <Link to={'/'}>
-                  <button className="btn btn-outline-secondary">Volver a Inicio</button>
-              </Link>
-          </div>)
-      }
-    </div>
-  )
-}
+          </form>
+              
+        </div>
+      : 
+        <div>
+          <h2>No hay Instrumentos en el carrito</h2>
+            <Link to={'/'}>
+              <button className="btn btn-outline-secondary">Seguir comprando instrumentos</button>
+            </Link>
+        </div>}
+      </>
+    )
+  }
 
 export default CartContainer
