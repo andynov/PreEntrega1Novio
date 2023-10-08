@@ -3,6 +3,8 @@ import { addDoc, collection, doc, getFirestore, writeBatch } from 'firebase/fire
 import { useState } from "react"
 
 import { useCartContext } from "../../context/CartContext"
+import ItemCart from "../ItemCart/ItemCart"
+import FormCart from "../FormCart/FormCart"
 
 const CartContainer = () => {
   const [dataForm, setDataForm] = useState({
@@ -12,7 +14,7 @@ const CartContainer = () => {
   })
 
   const [id, setId] = useState('')
-  
+
   const {cartList, deleteCart, precioTotal, quantityTotal, deleteItem} = useCartContext()
   
   const handleAddOrder = async (evt) => {
@@ -52,23 +54,15 @@ const CartContainer = () => {
       {id !== '' && <h2>Muchas gracias por su compra. Su orden es: {id}</h2>}
       {quantityTotal() ==! 0 ?
         <div>
-          {cartList.map (instrument => <div key={ instrument.id}>
-            <img className="w-25" src={instrument.imgUrl} alt="imagen instrumento" />
-            {instrument.name} - {instrument.precio} - {instrument.quantity}
-            <button onClick={ () => deleteItem(instrument.id)}>🛑</button>
-            </div>)}
+
+          <ItemCart cartList={cartList}  />
 
           <p>Precio Total: <strong>${precioTotal()}</strong></p>
           
           <button onClick={deleteCart}>Vaciar Carrito</button>
-    `
-          <form onSubmit={handleAddOrder}>
-            <input type='text' name='name' placeholder='Ingrese su nombre' value={dataForm.name} onChange={handleOnChange} />
-            <input type='number' name='phone' placeholder='Ingrese su teléfono' value={dataForm.phone} onChange={handleOnChange} />
-            <input type='email' name='email' placeholder='Ingrese su email' value={dataForm.email} onChange={handleOnChange} />
-            <button className="btn btn-outline-secondary">Confirmar compra</button>
-          </form>
-              
+
+          <FormCart handleAddOrder={handleAddOrder} dataForm={dataForm} handleOnChange={handleOnChange} />
+
         </div>
       : 
         <div>

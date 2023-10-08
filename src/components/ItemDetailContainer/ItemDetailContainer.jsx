@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import ItemDetail from './ItemDetail/ItemDetail'
+import { Loading } from '../Loading/Loading'
 
 const ItemDetailContainer = () => {
   const [instrument, setInstruments] = useState({})
   const {iid} = useParams()
+  const [loading, setLoading] = useState(true)
 
   useEffect (() =>{
     const db = getFirestore()
@@ -15,11 +17,12 @@ const ItemDetailContainer = () => {
     .then (resp => ({id: resp.id, ...resp.data()}))
     .then (resp => setInstruments(resp))
     .catch((err)=> console.log(err))
+    .finally(()=>setLoading(false))
   }, [])
 
   return (
     <div>
-    < ItemDetail instrument={instrument}  />
+      {loading ? <Loading /> : < ItemDetail instrument={instrument}  /> }
     </div>
   )
 }

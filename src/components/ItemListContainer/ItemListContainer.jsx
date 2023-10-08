@@ -3,15 +3,7 @@ import {collection, getDocs, getFirestore, query, where} from 'firebase/firestor
 import { useParams } from "react-router-dom";
 
 import ItemList from "../ItemList/ItemList";
-
-const Loading = () => {
-  return (
-    <>
-      <h2>Loading...</h2>
-    </>
-  )
-}
-
+import { Loading } from "../Loading/Loading";
 
 const ItemListContainer = () => {
   const [instrumentos, setInstruments] = useState({})
@@ -34,6 +26,5 @@ useEffect(()=>{
     </div>
   )
 }
-
 
 export default ItemListContainer
