@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { addDoc, collection, doc, getFirestore, writeBatch } from 'firebase/firestore'
+import { addDoc, collection, getFirestore} from 'firebase/firestore'
 import { useState } from "react"
 
 import { useCartContext } from "../../context/CartContext"
@@ -7,11 +7,18 @@ import ItemCart from "../ItemCart/ItemCart"
 import FormCart from "../FormCart/FormCart"
 
 const CartContainer = () => {
+
   const [dataForm, setDataForm] = useState({
     name:'',
     phone:'',
     email:''
   })
+
+  const handleOnChange = (evt) => {
+    setDataForm({
+      ...dataForm, 
+      [evt.target.name] : evt.target.value })
+  }
 
   const [id, setId] = useState('')
 
@@ -20,11 +27,11 @@ const CartContainer = () => {
   const handleAddOrder = async (evt) => {
     evt.preventDefault()
     const order = {}
-    order.buyer = {name: 'Andy', phone: '18574234', email: 'andres@comprador.com'}
+    order.buyer = {name: dataForm.name, phone: dataForm.phone, email: dataForm.email}
     order.items = cartList.map(instrument =>{
       return {id: instrument.id, precio: instrument.precio, quantity: instrument.quantity}})
     order.total = precioTotal()
-    
+
     // agregar una orden en Firestore
     const queryDB = getFirestore()
     const orderCollection = collection(queryDB, 'orders')
@@ -35,18 +42,7 @@ const CartContainer = () => {
       setDataForm({name:'', phone:'', email:''})
       deleteCart()
     })
-    
-    // actualizar un documento
 
-    //const batch = writeBatch(queryDB)
-
-    // batch.update()
-  }
-
-  const handleOnChange = (evt) => {
-    setDataForm({
-      ...dataForm, 
-      [evt.target.name] : evt.target.value })
   }
 
   return (
@@ -55,7 +51,7 @@ const CartContainer = () => {
       {quantityTotal() ==! 0 ?
         <div>
 
-          <ItemCart cartList={cartList}  />
+          <ItemCart cartList={cartList} deleteItem={deleteItem}  />
 
           <p>Precio Total: <strong>${precioTotal()}</strong></p>
           

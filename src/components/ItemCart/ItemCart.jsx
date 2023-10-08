@@ -1,4 +1,4 @@
-const ItemCart = ({cartList}) => {
+const ItemCart = ({cartList, deleteItem}) => {
   return (
     <div>
         {cartList.map (instrument => <div key={ instrument.id}>
