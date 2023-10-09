@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { addDoc, collection, getFirestore} from 'firebase/firestore'
+import { addDoc, collection, doc, getFirestore, writeBatch} from 'firebase/firestore'
 import { useState } from "react"
 
 import { useCartContext } from "../../context/CartContext"
@@ -26,22 +26,38 @@ const CartContainer = () => {
   
   const handleAddOrder = async (evt) => {
     evt.preventDefault()
-    const order = {}
-    order.buyer = {name: dataForm.name, phone: dataForm.phone, email: dataForm.email}
-    order.items = cartList.map(instrument =>{
-      return {id: instrument.id, precio: instrument.precio, quantity: instrument.quantity}})
-    order.total = precioTotal()
+    if (dataForm.name !== '' && dataForm.email !== '' && dataForm.phone !== ''){
+      const order = {}
+      order.buyer = {name: dataForm.name, phone: dataForm.phone, email: dataForm.email}
+      order.items = cartList.map(instrument =>{
+        return {id: instrument.id, precio: instrument.precio, quantity: instrument.quantity}})
+      order.total = precioTotal()
 
-    // agregar una orden en Firestore
-    const queryDB = getFirestore()
-    const orderCollection = collection(queryDB, 'orders')
-    addDoc(orderCollection, order)
-    .then(({id}) => setId(id))
-    .catch(err => console.log(err))
-    .finally(() => {
-      setDataForm({name:'', phone:'', email:''})
-      deleteCart()
+      // agregar una orden en Firestore
+      const queryDB = getFirestore()
+      const orderCollection = collection(queryDB, 'orders')
+      addDoc(orderCollection, order)
+      .then(({id}) => setId(id))
+      .catch(err => console.log(err))
+      .finally(() => {
+        setDataForm({name:'', phone:'', email:''})
+        deleteCart()
+      
+      // actualizar un producto
+
+      // const batch = writeBatch(queryDB)
+      // const queryDBUpdate = doc(queryDB, 'instrumentos', instrumentos.id)
+      // batch.update (queryDBUpdate.forEach(instrument => {
+      // instrument.id === id ? instrument.stock = instrument.stock - cartList.quantity : instrument.stock 
+      // }))
+      // batch.commit()
+      // })
     })
+
+    .catch(err => console.log(err))
+    }else{
+      alert('Todos los campos deben ser completados')
+    }
   }
 
   return (
