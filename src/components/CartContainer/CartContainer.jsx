@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { addDoc, collection, doc, getFirestore, writeBatch} from 'firebase/firestore'
+import { addDoc, collection, doc, getFirestore, writeBatch, getDoc} from 'firebase/firestore'
 import { useState } from "react"
 
 import { useCartContext } from "../../context/CartContext"
@@ -36,29 +36,39 @@ const CartContainer = () => {
       // agregar una orden en Firestore
       const queryDB = getFirestore()
       const orderCollection = collection(queryDB, 'orders')
-      addDoc(orderCollection, order)
-      .then(({id}) => setId(id))
-      .catch(err => console.log(err))
-      .finally(() => {
-        setDataForm({name:'', phone:'', email:''})
+      try {
+        const orderDocRef = await addDoc(orderCollection, order);
+        const batch = writeBatch(queryDB);
+
+        // Itera sobre el carrito y actualiza el stock de cada producto
+        await Promise.all(
+        cartList.map(async (cartItem) => {
+          const productId = cartItem.id;
+          const quantity = cartItem.quantity;
+          const productRef = doc(queryDB, 'instrumentos', productId);
+          const productDoc = await getDoc(productRef);
+    
+          if (productDoc.exists()) {
+            const currentStock = productDoc.data().stock;
+            const newStock = currentStock - quantity;
+        // Actualiza el stock del producto en el lote (batch)
+            batch.update(productRef, { stock: newStock });
+            }
+          })
+        );
+  
+        // Ejecuta el lote para actualizar los productos en Firestore
+        await batch.commit();
+        setId(orderDocRef.id)
         deleteCart()
-      
-      // actualizar un producto
-
-      // const batch = writeBatch(queryDB)
-      // const queryDBUpdate = doc(queryDB, 'instrumentos', instrumentos.id)
-      // batch.update (queryDBUpdate.forEach(instrument => {
-      // instrument.id === id ? instrument.stock = instrument.stock - cartList.quantity : instrument.stock 
-      // }))
-      // batch.commit()
-      // })
-    })
-
-    .catch(err => console.log(err))
-    }else{
-      alert('Todos los campos deben ser completados')
+      } catch (error) {
+        console.error('Error al agregar la orden o actualizar el stock', error);
+      }
+    } else {
+      alert('Todos los campos deben ser completados');
     }
-  }
+  };
+
 
   return (
     <>
@@ -82,8 +92,8 @@ const CartContainer = () => {
               <button className="btn btn-outline-secondary">Seguir comprando instrumentos</button>
             </Link>
         </div>}
-      </>
-    )
-  }
+    </>
+  )
+}
 
 export default CartContainer
