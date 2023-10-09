@@ -1,8 +1,34 @@
-# React + Vite
+# E-commerce Allegro - Instrumentos Musicales
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Datos de autoría
 
-Currently, two official plugins are available:
+Autor: Andrés Emanuel Novío
+E-mail: andresnovmusica@gmail.com
+Instagram: @andynomvmusica
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deploy - Demo del Proyecto:
+https://creative-beignet-22a25d.netlify.app
+
+## Librerías externas utilizadas:
+
+- Bootstrap: Librería de Estilos. Versión 5.3.1
+- React-bootstrap: Librería Bootstrap aplicada a React. Versión 2.8.0
+- Vite: Entorno de ejecución React. Versión 4.4.5
+- Firebase: Uso de base de datos No SQL. Versión 10.4.0
+- React Dom Route: Utilizada para ruteo. Versión: 18.2.0
+- React-router-dom: Librería utilizada para ruteo. Versión 6.15.0
+
+## Repositorio GitHub:
+https://github.com/andynov/ProyectoFinalReactNovio
+
+Para poder correr el Proyecto en un editor de código:
+
+1. Clonar proyecto desde GitHub
+2. Tener instalado Node JS en su ordenador
+3. Instalamos Vite. En la Terminal, ejecutar npm create vite@latest ecommerce-allegro
+4. Ejecutamos:
+cd ecommerce-allegro
+npm install
+npm run dev 
+5. Ingresamos al localhost para poder visualizar el sitio en un navegador web.
+
