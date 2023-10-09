@@ -13,7 +13,7 @@ const FormCart = ({handleAddOrder, dataForm, handleOnChange}) => {
     const inputName = evt.target.name
     const inputValue = evt.target.value
     inputValue.length === 0 ? setErrors({
-      ...errors, [inputName]: `${inputName} se encuentra vacío`
+      ...errors, [inputName]: `Se requiere completar este campo`
     })
     : setErrors({
       ...errors, [inputName]: ''
@@ -23,7 +23,7 @@ const FormCart = ({handleAddOrder, dataForm, handleOnChange}) => {
     
   return (
     <div>
-      <form onSubmit={handleAddOrder} >
+      <form onSubmit={handleAddOrder}>
         <input type='text' name='name' placeholder='Ingrese su nombre' value={dataForm.name} onChange={handleOnChange} onBlur={handleBlur} />
         <p className="error">{errors.name}</p>
         <input type='number' name='phone' placeholder='Ingrese su teléfono' value={dataForm.phone} onChange={handleOnChange} onBlur={handleBlur} />

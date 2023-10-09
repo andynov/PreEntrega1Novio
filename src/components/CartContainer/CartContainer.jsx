@@ -42,7 +42,6 @@ const CartContainer = () => {
       setDataForm({name:'', phone:'', email:''})
       deleteCart()
     })
-
   }
 
   return (
