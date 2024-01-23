@@ -11,11 +11,11 @@ const NavBar = () => {
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Link className="name-shop" to='/'><img className="logo" src="/logo.png" alt="logo" /><strong className="allegro">Allegro </strong><i className="market">Tienda de Instrumentos Musicales</i></Link>
+          <Link className="name-shop" to='/'><img className="logo" src="/logo.png" alt="logo" /><strong className="allegro">Allegro </strong><i className="market">Musical Instruments Shop</i></Link>
           <Nav className="me-auto categories">
-            <NavLink className="element-cat" to='/category/guitarra'>Guitarras</NavLink>
-            <NavLink className="element-cat" to='/category/percusion'>Percusión</NavLink>
-            <NavLink className="element-cat" to='/category/vientos'>Instrumentos de viento</NavLink>
+            <NavLink className="element-cat" to='/category/guitarra'>Guitars</NavLink>
+            <NavLink className="element-cat" to='/category/percusion'>Percussion</NavLink>
+            <NavLink className="element-cat" to='/category/vientos'>Wind instruments</NavLink>
           </Nav>
           <Link className="cart-widget" to='/cart'>
             <CartWidget />

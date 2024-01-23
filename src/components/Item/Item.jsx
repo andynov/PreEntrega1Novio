@@ -7,7 +7,7 @@ const Item = ({ instrument }) => {
             <div className="card-body">
                 <img className="w-100" src={instrument.imgUrl} alt="imagen instrumento" />
             </div>
-                <p>Precio: ${instrument.precio}</p>
+                <p>Prize: USD {instrument.precio}</p>
                 <p>{instrument.description}</p>
                 <div className="card-footer">
                     <Link to={`/detalle/${instrument.id}`}>
