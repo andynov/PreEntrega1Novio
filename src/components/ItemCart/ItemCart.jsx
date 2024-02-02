@@ -1,11 +1,25 @@
+import './ItemCart.css'
+
 const ItemCart = ({cartList, deleteItem}) => {
   return (
-    <div>
-        {cartList.map (instrument => <div key={ instrument.id}>
-            <img className="w-25" src={instrument.imgUrl} alt="imagen instrumento" />
-            {instrument.name} - {instrument.precio} - {instrument.quantity}
-            <button onClick={ () => deleteItem(instrument.id)}>🛑</button>
-            </div>)}
+    <div className='table-container'>
+        <table>
+          <tbody>
+            <tr>
+              <th>Instrument</th>
+              <th>Quantity</th>
+              <th>Prize</th>
+              <th>Delete</th>
+            </tr>
+          {cartList.map (instrument => <tr key={instrument.id}>
+                <td><img className='img-Instrument' src={instrument.imgUrl} alt="imagen instrumento" /> {instrument.name}</td>
+                <td>{instrument.quantity}</td>
+                <td>{instrument.precio}</td>
+                <td><button onClick={ () => deleteItem(instrument.id)}>🛑</button></td>
+            </tr>)}
+          </tbody>
+        </table>
+
     </div>
   )
 }

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.tarjeta {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.tarjeta:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-header {
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 16px;
+    text-align: center;
+    font-style: italic;
+}
+
+.prize {
+    font-family:'Kanit', sans-serif; ;
+    text-align: center;
+    font-style: bold;
+}

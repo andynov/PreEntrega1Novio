@@ -11,7 +11,7 @@ const NavBar = () => {
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Link className="name-shop" to='/'><img className="logo" src="/logo.png" alt="logo" /><strong className="allegro">Allegro </strong><i className="market">Musical Instruments Shop</i></Link>
+          <Link className="name-shop" to='/'><img className="logo" src="/logo.svg" alt="logo" /><strong className="allegro">Allegro </strong></Link>
           <Nav className="me-auto categories">
             <NavLink className="element-cat" to='/category/guitarra'>Guitars</NavLink>
             <NavLink className="element-cat" to='/category/percusion'>Percussion</NavLink>

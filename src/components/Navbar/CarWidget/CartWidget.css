@@ -2,6 +2,11 @@
     display: inline-block;
     width: 40px;
     margin-right: 5px;
+    transition: transform 0.2s;
+}
+
+.img-chart:hover{
+    transform: scale(1.1);
 }
 
 .numtotal {

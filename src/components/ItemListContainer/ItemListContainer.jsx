@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { Loading } from "../Loading/Loading";
 
+import './ItemListContainer.css'
+
 const ItemListContainer = () => {
   const [instrumentos, setInstruments] = useState({})
   const [loading, setLoading] = useState(true)
@@ -21,7 +23,7 @@ useEffect(()=>{
   }, [cid])
 
   return (
-    <div className="row">
+    <div className="container">
       {loading ? <Loading /> : <ItemList instrumentos={instrumentos} /> }
     </div>
   )

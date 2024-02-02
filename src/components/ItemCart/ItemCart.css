@@ -1,0 +1,21 @@
+.table-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border: 1px solid;
+}
+
+.img-Instrument{
+    width:30px;
+    margin-right: 10px;
+}
+
+table{
+    width: 100vh;
+    text-align: center;
+}
+
+th, tr, td {
+    padding: 10px
+}
+

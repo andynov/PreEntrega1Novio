@@ -6,6 +6,8 @@ import { useCartContext } from "../../context/CartContext"
 import ItemCart from "../ItemCart/ItemCart"
 import FormCart from "../FormCart/FormCart"
 
+import './CartContainer.css';
+
 const CartContainer = () => {
 
   const [dataForm, setDataForm] = useState({
@@ -62,34 +64,38 @@ const CartContainer = () => {
         setId(orderDocRef.id)
         deleteCart()
       } catch (error) {
-        console.error('Error al agregar la orden o actualizar el stock', error);
+        console.error('Error adding the order or updating stock', error);
       }
     } else {
-      alert('Todos los campos deben ser completados');
+      alert('All fields must be completed');
     }
   };
 
 
   return (
     <>
-      {id !== '' && <h2>Muchas gracias por su compra. Su orden es: {id}</h2>}
-      {quantityTotal() ==! 0 ?
-        <div>
+      {id !== '' && <div className="order-completed">
+                      <h2>Thank you for your purchase.</h2>
+                      <h3>Your order number is: {id}</h3>
+                    </div>
+      }
+      {quantityTotal() !== 0 ?
+        <div className="item-cart-container">
 
           <ItemCart cartList={cartList} deleteItem={deleteItem}  />
 
-          <p>Precio Total: <strong>${precioTotal()}</strong></p>
+          <p className="total-prize">Total: USD <strong>${precioTotal()}</strong></p>
           
-          <button onClick={deleteCart}>Vaciar Carrito</button>
+          <button className="delete-cart btn btn-outline-danger" onClick={deleteCart}>Delete Cart</button>
 
           <FormCart handleAddOrder={handleAddOrder} dataForm={dataForm} handleOnChange={handleOnChange} />
 
         </div>
       : 
-        <div>
-          <h2>No hay Instrumentos en el carrito</h2>
+        <div className="empty-container">
+          <h2 className="empty-text">The cart is empty</h2>
             <Link to={'/'}>
-              <button className="btn btn-outline-secondary">Seguir comprando instrumentos</button>
+              <button className="btn btn-outline-secondary empty-btn">Continue buying</button>
             </Link>
         </div>}
     </>

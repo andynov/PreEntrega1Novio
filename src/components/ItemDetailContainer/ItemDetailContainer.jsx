@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { Loading } from '../Loading/Loading'
 
+import './ItemDetailContainer.css'
+
 const ItemDetailContainer = () => {
   const [instrument, setInstruments] = useState({})
   const {iid} = useParams()
@@ -21,7 +23,7 @@ const ItemDetailContainer = () => {
   }, [])
 
   return (
-    <div>
+    <div className='detail-container'>
       {loading ? <Loading /> : < ItemDetail instrument={instrument}  /> }
     </div>
   )

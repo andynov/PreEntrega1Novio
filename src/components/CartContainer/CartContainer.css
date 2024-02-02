@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap');
+
+.empty-container{
+    margin-top: 40px;
+    display: block;
+    text-align: center;
+}
+
+.empty-text{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.total-prize{
+    text-align: center;
+    margin-right: 30px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.item-cart-container{
+    text-align: center;
+}
+
+.delete-cart{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.order-completed{
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Fira Sans', sans-serif;
+}
