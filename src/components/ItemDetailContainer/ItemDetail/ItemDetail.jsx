@@ -17,7 +17,7 @@ const ItemDetail = ({instrument}) => {
 
 
   return (
-    <div>
+    <div className="item-detail-cart">
       <h1 className="title-detail"><strong>{instrument.name}</strong></h1>
       <div>
       </div>

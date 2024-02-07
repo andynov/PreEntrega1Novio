@@ -1,8 +1,9 @@
+/* First Mobile View -------------------------------------------------- */
+
 .table-container{
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    border: 1px solid;
 }
 
 .img-Instrument{
@@ -19,3 +20,16 @@ th, tr, td {
     padding: 10px
 }
 
+/* Computer View -------------------------------------------------- */
+
+@media only screen and (min-width: 901px) {
+
+.table-container{
+    border: 1px solid;
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+}

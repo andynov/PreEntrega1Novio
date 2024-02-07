@@ -1,34 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap');
 
+/* First Mobile View ------------------------------------------------- */
+
+.active{
+    background-color: #e4d2d2;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    background-color: #dddddd;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .logo {
-    width: 60px;
+    width: 50px;
     margin-right: 5px;
+    margin-left: 10px;
 }
 
-.categories {
-    font-family: 'Poppins', sans-serif;
+nav .burger-menu{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 0.9rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
 }
 
-.element-cat {
-    margin-left: 25px;
-    text-decoration: none;
-    color: rgb(83, 77, 77);
+nav .burger-menu span{
+    height: 0.4rem;
+    width: 100%;
+    background-color: #e79797;
+    border-radius: 0.2rem;
 }
 
-.element-cat:hover{
-    text-shadow: 1px 1px 2px #3b3b3b;
+nav .burger-menu:hover{
+    cursor: pointer;
 }
 
-.allegro {
+.name-shop{
     font-size: 27px;
     color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 
-
-.name-shop {
+nav ul{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.25rem;
     text-decoration: none;
+}
+
+nav ul.open {
+    display: flex;
+    margin: 0 auto;
+}
+
+.categories{
+    text-align: center;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(83, 77, 77);
+    text-decoration: none;
+    margin: 0.2rem 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.categories:hover{
+    text-shadow: 1px 1px 2px #3b3b3b;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
 }
 
 .cart-widget {
+    position: absolute;
+    top: 0.75rem;
+    right: 4rem;
+    display: flex;
+    flex-direction: row;
     text-decoration: none;
 }
+
+
+/* Computer View ------------------------------------------------- */
+
+@media only screen and (min-width: 901px) {
+
+    nav{
+        flex-direction: row;
+    }
+
+    nav .burger-menu{
+        display: none;
+    }
+
+    nav ul{
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+
+}
+
+
+    
+
+    
+    
+
+
+    
+
+

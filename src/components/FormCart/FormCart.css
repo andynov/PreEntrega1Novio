@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap');
 
+/* First Mobile View -------------------------------------------------- */
+
 h3{
     font-family: 'Fira Sans', sans-serif;
-    font-size: 20px;;
+    font-size: 20px;
 }
 
 input{
     font-family: 'Fira Sans', sans-serif;
-    width: 50vh;
+    width: 40vh;
 }
 
 input::placeholder{
@@ -17,4 +19,19 @@ input::placeholder{
 .required{
     color: red;
     font-size: 10px;
+}
+
+/* Computer View -------------------------------------------------- */
+
+
+@media only screen and (min-width: 901px) {
+
+    form{
+        margin-top: 20px;
+    }
+
+    input{
+        width: 50vh;
+    }
+
 }

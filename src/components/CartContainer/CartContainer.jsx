@@ -34,6 +34,13 @@ const CartContainer = () => {
       order.items = cartList.map(instrument =>{
         return {id: instrument.id, precio: instrument.precio, quantity: instrument.quantity}})
       order.total = precioTotal()
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your order has been completed",
+        showConfirmButton: false,
+        timer: 1500
+      });
 
       // agregar una orden en Firestore
       const queryDB = getFirestore()
@@ -67,7 +74,11 @@ const CartContainer = () => {
         console.error('Error adding the order or updating stock', error);
       }
     } else {
-      alert('All fields must be completed');
+      Swal.fire({
+        icon: "warning",
+        text: "Please, complete all fields",
+
+      });
     }
   };
 

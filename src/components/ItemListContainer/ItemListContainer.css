@@ -1,6 +1,10 @@
+/* First Mobile View -------------------------------------------------- */
+
 .container{
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 5px;
+    margin: 7px;
 }
+

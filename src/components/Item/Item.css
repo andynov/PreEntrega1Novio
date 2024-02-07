@@ -1,27 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
+/* First Mobile View ------------------------------------------------- */
+
 .tarjeta {
-    text-align: center;
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid rgba(109, 109, 109, 0.2);
+    margin-top: 15px;
     margin-left: 20px;
+    width: 50vh;
+    border-radius: 10px;
+    transition: all 0.2s;
 }
 
-.tarjeta:hover {
+.tarjeta:hover{
+    scale: 1.01;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.card-header {
+.img-tarjeta {
+    margin: 0 auto;
+    height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.tarjeta-body {
+    height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
+    background-color: rgba(135, 135, 136, 0.2);
 }
 
 .description {
+    padding: 5px;
+    margin-top: 5px;
     font-size: 16px;
-    text-align: center;
     font-style: italic;
 }
 
 .prize {
-    font-family:'Kanit', sans-serif; ;
-    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+    height: 5vh;
+    font-family: 'Kanit', sans-serif;
     font-style: bold;
+    background-color: rgba(165, 165, 165, 0.2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+/* Computer View ------------------------------------------------- */
+
+@media only screen and (min-width: 901px) {
+
+    .card-title {
+        font-weight: 500;
+    }
+
+    .tarjeta-body{
+        height: 50vh;
+    }
 }
